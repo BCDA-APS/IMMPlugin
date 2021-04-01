@@ -7,6 +7,7 @@
 
 #define NDPluginSparseArraySizeString     "SPARSE_ARRAY_SIZE"
 #define NDPluginSparseThresholdString     "THRESHOLD"
+#define NDPluginSparseLastSizeString      "LAST_WRITTEN_SIZE"
 
 class epicsShareClass NDPluginSparse : public NDPluginDriver {
 	public:
@@ -21,6 +22,7 @@ class epicsShareClass NDPluginSparse : public NDPluginDriver {
 	protected:
 		int NDPluginSparseArraySize;
 		int NDPluginSparseThreshold;
+		int NDPluginSparseLastSize;
 		
 	private:
 		template <typename epicsType> std::vector< std::pair <size_t, epicsUInt32> > doCompress(NDArray* input);
