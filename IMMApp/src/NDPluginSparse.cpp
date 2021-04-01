@@ -87,6 +87,8 @@ void NDPluginSparse::processCallbacks(NDArray *pArray)
 	output->pAttributeList->add("pixel_size", "Pixel Bytes", NDAttrInt32, &info.bytesPerElement);
 	output->pAttributeList->add("compressed", "Compression Used", NDAttrInt32, &six);
 
+	
+	this->setIntegerParam(NDPluginSparseLastSize, dlen);
 	NDPluginDriver::endProcessCallbacks(output, false, true);
 	callParamCallbacks();
 }
@@ -130,6 +132,7 @@ NDPluginSparse::NDPluginSparse(const char *portName, int queueSize, int blocking
 {
 	createParam(NDPluginSparseThresholdString, asynParamInt32, &NDPluginSparseThreshold);
 	createParam(NDPluginSparseArraySizeString, asynParamInt32, &NDPluginSparseArraySize);
+	createParam(NDPluginSparseLastSizeString,  asynParamInt32, &NDPluginSparseLastSize);
 }
 
 /** Configuration command */

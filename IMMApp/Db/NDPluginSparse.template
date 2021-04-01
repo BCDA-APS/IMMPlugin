@@ -29,3 +29,10 @@ record(ai, "$(P)$(R)Threshold_RBV")
 	field(INP, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))THRESHOLD")
 	field(SCAN, "I/O Intr")
 }
+
+record(ai, "$(P)$(R)NumCompPixels")
+{
+	field(DTYP, "asynInt32")
+	field(INP, "@asyn($(PORT),$(ADDR=0),$(TIMEOUT=1))LAST_WRITTEN_SIZE")
+	field(SCAN, "I/O Intr")
+}
