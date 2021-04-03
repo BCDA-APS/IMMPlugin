@@ -51,12 +51,12 @@ void NDPluginSparse::processCallbacks(NDArray *pArray)
 	this->getIntegerParam(NDPluginSparseArraySize, &max_length);
 	
 	size_t dlen = values.size();
-	size_t dims[1] = { max_length };
+	size_t dims[1] = { max_length * 2};
 	
-	if (dlen * 2 > max_length)
+	if (dlen > max_length)
 	{
-		printf("Pixel hits require %d elements, limiting to %d\n", dlen * 2, max_length);
-		dlen = (int) max_length / 2;
+		printf("Pixel hits greater than maximum allowed, limiting to %d\n", max_length);
+		dlen = (int) max_length;
 	}
 	
 	NDArray* output = this->pNDArrayPool->alloc(1, dims, NDUInt32, 0, NULL);
