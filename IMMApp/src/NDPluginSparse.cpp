@@ -1,5 +1,6 @@
 #include <vector>
 #include <utility>
+#include <cstring>
 
 #include "NDPluginSparse.h"
 #include "epicsExport.h"
@@ -60,10 +61,16 @@ void NDPluginSparse::processCallbacks(NDArray *pArray)
 	}
 	
 	NDArray* output = this->pNDArrayPool->alloc(1, dims, NDUInt32, 0, NULL);
+	
+	NDArrayInfo_t info;
+	pArray->getInfo(&info);
+	
 	output->uniqueId = pArray->uniqueId;
 	output->timeStamp = pArray->timeStamp;
 	
 	epicsUInt32* out_data = (epicsUInt32 *) output->pData;
+	
+	std::memset(out_data, 0, info.totalBytes);
 	
 	for (int index = 0; index < dlen; index += 1)
 	{
@@ -71,9 +78,6 @@ void NDPluginSparse::processCallbacks(NDArray *pArray)
 		out_data[index + dlen] = (epicsUInt32) values[index].second;
 	}
 	
-	NDArrayInfo_t info;
-	pArray->getInfo(&info);
-
 	int zero = 0;
 	int six = 6;
 
