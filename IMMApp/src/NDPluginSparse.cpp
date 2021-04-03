@@ -69,9 +69,7 @@ void NDPluginSparse::processCallbacks(NDArray *pArray)
 	output->timeStamp = pArray->timeStamp;
 	
 	epicsUInt32* out_data = (epicsUInt32 *) output->pData;
-	
-	std::memset(out_data, 0, info.totalBytes);
-	
+		
 	for (int index = 0; index < dlen; index += 1)
 	{
 		out_data[index] = values[index].first;
