@@ -2,6 +2,7 @@
 #include <asynDriver.h>
 #include <NDPluginFile.h>
 #include <NDArray.h>
+#include <shareLib.h>
 
 #define NDPluginLastLengthReadString    "NUM_COMP_PIXELS"
 

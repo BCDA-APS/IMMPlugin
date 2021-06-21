@@ -2,8 +2,10 @@
 #define NDPluginSparse_H
 
 #include <epicsTypes.h>
+#include <shareLib.h>
 
 #include "NDPluginDriver.h"
+
 
 #define NDPluginSparseArraySizeString     "SPARSE_ARRAY_SIZE"
 #define NDPluginSparseThresholdString     "THRESHOLD"
